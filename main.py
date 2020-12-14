@@ -38,11 +38,7 @@ async def Obtener_cliente(cc: int):
     if clientes_in_db != None:
         clientes_out = ClientesOut(**clientes_in_db.dict())
         #Mostrar los resultados de las compras
-        compras_key = get_Compra_Cliente(cc)
-        compras_out = []
-        for i in compras_key:
-            compras_out.append(ComprasOut(**i.dict()))
-        resumen_compras = dict(compras_out)
+        compras_out = get_Compra_Cliente(cc):
         Resultados = {"Cliente":clientes_out, "Compras":compras_out}
         return  Resultados
         #raise HTTPException(status_code=200, detail="El cliente existe")

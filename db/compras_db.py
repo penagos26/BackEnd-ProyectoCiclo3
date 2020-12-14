@@ -64,7 +64,10 @@ generator = {"id":5}
 
 def get_Compra_Cliente(cedulas: int):
     cliente_in_idcompra = [x for x in database_compras if database_compras[x]["cc_cliente"] == cedulas]
-    return cliente_in_idcompra
+    dict_compras = {}
+    for i in cliente_in_idcompra:
+            dict_compras[i] = database_compras[i]
+    return dict_compras
 
 def save_compra(compra_in_db: ComprasInDB):
     generator["id"] = generator["id"] + 1
