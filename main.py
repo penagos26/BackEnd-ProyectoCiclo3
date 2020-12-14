@@ -36,10 +36,14 @@ async def Reg_cliente(cliente_in: ClientesIn):
 async def Obtener_cliente(cc: int):
     clientes_in_db = get_cliente(cc)
     if clientes_in_db != None:
+        Resultados = {}
         clientes_out = ClientesOut(**clientes_in_db.dict())
         #Mostrar los resultados de las compras
         compras_lista = get_Compra_Cliente(cc)
-        compras_out = ComprasOut(**compras_lista.dict())
+        x = 0
+        for i in compras_lista:
+            x++
+            compras_out[x] = ComprasOut(**compras_lista[i].dict())
         #Resultados = {"Cliente":clientes_out},{"Compras":get_Compra_Cliente(cc)}
         Resultados["Cliente"] = clientes_out
         Resultados["Compras"] = compras_out
