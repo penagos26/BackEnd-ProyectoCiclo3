@@ -42,8 +42,9 @@ async def Obtener_cliente(cc: int):
         compras_out = []
         for i in compras_key:
             compras_out.append(ComprasOut(**i.dict()))
-            
-        return   clientes_out , dict(compras_out)
+        resumen_compras = dict(compras_out)
+        Resultados = {"Cliente":clientes_out, "Compras":compras_out}
+        return  Resultados
         #raise HTTPException(status_code=200, detail="El cliente existe")
        
     else:
