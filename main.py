@@ -35,16 +35,17 @@ async def Reg_cliente(cliente_in: ClientesIn):
 @api.get("/clientes/consultar/{cc}")
 async def Obtener_cliente(cc: int):
     clientes_in_db = get_cliente(cc)
-    if clientes_in_db == None:
-        raise HTTPException(status_code=404, detail="El cliente no existe")
-    else:
+    if clientes_in_db != None:
         clientes_out = ClientesOut(**clientes_in_db.dict())
         #Mostrar los resultados de las compras
-        compras_key = get_Compra_Cliente(cc)
-        compras_out = []
-        for i in compras_key:
-            compras_out.append(ComprasOut(**i.dict()))
-        return clientes_out, compras_out
+        #compras_key = get_Compra_Cliente(cc)
+        #compras_out = []
+        #for i in compras_key:
+            #compras_out.append(ComprasOut(**i.dict()))
+        raise HTTPException(status_code=200, detail="El cliente existe")
+        return clientes_out, #compras_out
+    else:
+        raise HTTPException(status_code=404, detail="El cliente no existe")
 
 @api.put("/clientes/actualizar/")
 async def Actualizar_cliente(clientes_in: ClientesIn):
