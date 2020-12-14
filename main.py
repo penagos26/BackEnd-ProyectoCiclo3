@@ -40,7 +40,7 @@ async def Obtener_cliente(cc: int):
         #Mostrar los resultados de las compras
         compras_out = get_Compra_Cliente(cc)
         #Resultados = {"Cliente":clientes_out}#, "Compras":compras_out}
-        return clientes_out, compras_out #Resultados
+        return clientes_out#, compras_out Resultados
         #raise HTTPException(status_code=200, detail="El cliente existe")
        
     else:
