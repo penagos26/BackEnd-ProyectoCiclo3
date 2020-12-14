@@ -43,7 +43,7 @@ async def Obtener_cliente(cc: int):
         #for i in compras_key:
             #compras_out.append(ComprasOut(**i.dict()))
         raise HTTPException(status_code=200, detail="El cliente existe")
-        return clientes_out, #compras_out
+        return clientes_out #compras_out
     else:
         raise HTTPException(status_code=404, detail="El cliente no existe")
 
