@@ -60,9 +60,9 @@ def get_cliente(cedulas: int):
         return None
 
 def save_cliente(cliente_in_db: ClientesInDB):
-    database_clientes[cliente_in_db.username] = cliente_in_db.dict()
+    database_clientes[cliente_in_db.cc] = cliente_in_db.dict()
     return cliente_in_db
 
 def update_cliente(cliente_in_db: ClientesInDB):
-    database_clientes[cliente_in_db.username] = cliente_in_db.dict()
+    database_clientes[cliente_in_db.cc] = cliente_in_db.dict()
     return cliente_in_db
