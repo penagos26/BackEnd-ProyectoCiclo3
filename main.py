@@ -13,7 +13,7 @@ api = FastAPI()
 origins = [
     "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
     "http://localhost", "http://localhost:8080",
-    "https://miniSAP01.herokuapp.com" #Nombre de la app en Heroku - MiniSAP 
+    "https://minisap01.herokuapp.com" #Nombre de la app en Heroku - MiniSAP 
 ]
 
 api.add_middleware(
