@@ -43,7 +43,7 @@ async def Obtener_cliente(cc: int):
         #Mostrar los resultados de las compras
         for i in compras_in_db:            
             compra_out = ComprasOut(**i.dict())
-            if compra_out[cc_cliente] == cc:
+            if compra_out["cc_cliente"] == cc:
                 compras_out.append(compra_out)
         Resultados["Cliente"] = clientes_out
         Resultados["Compras"] = compras_out
