@@ -21,7 +21,7 @@ api.add_middleware(
     allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
 )
 
-@api.post("/cliente/registro_cliente")
+@api.post("/clientes/registro_cliente")
 async def Reg_cliente(cliente_in: ClientesIn):
     cliente_in_db = get_cliente(cliente_in.cc)
     if cliente_in_db == None:
