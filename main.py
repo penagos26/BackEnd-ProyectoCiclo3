@@ -38,12 +38,12 @@ async def Obtener_cliente(cc: int):
     if clientes_in_db != None:
         clientes_out = ClientesOut(**clientes_in_db.dict())
         #Mostrar los resultados de las compras
-        #compras_key = get_Compra_Cliente(cc)
-        #compras_out = []
-        #for i in compras_key:
-            #compras_out.append(ComprasOut(**i.dict()))
+        compras_key = get_Compra_Cliente(cc)
+        compras_out = []
+        for i in compras_key:
+            compras_out.append(ComprasOut(**i.dict()))
         raise HTTPException(status_code=200, detail="El cliente existe")
-        return clientes_out #compras_out
+        return  compras_out #clientes_out
     else:
         raise HTTPException(status_code=404, detail="El cliente no existe")
 
