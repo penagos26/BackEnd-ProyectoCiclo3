@@ -12,7 +12,7 @@ api = FastAPI()
 
 origins = [
     "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
-    "http://localhost", "http://localhost:8080",
+    "http://localhost", "http://localhost:8000",
     "https://minisap01.herokuapp.com" #Nombre de la app en Heroku - MiniSAP 
 ]
 
@@ -35,22 +35,23 @@ async def Reg_cliente(cliente_in: ClientesIn):
 @api.get("/clientes/consultar/{cc}")
 async def Obtener_cliente(cc: int):
     clientes_in_db = get_cliente(cc)
-    #compras_in_db = get_Compra_Cliente()
-    #compras_out = []
     if clientes_in_db != None:
-        #Resultados = {}
         clientes_out = ClientesOut(**clientes_in_db.dict())
-        #Mostrar los resultados de las compras
-        #for i in compras_in_db:            
-           # compra_out = ComprasOut(**i.dict())
-           # if compra_out["cc_cliente"] == cc:
-            #    compras_out.append(compra_out)
-        #Resultados["Cliente"] = clientes_out
-        #Resultados["Compras"] = compras_out
-        return clientes_out  #Resultados , compras_out 
-        #raise HTTPException(status_code=200, detail="El cliente existe")
+        return clientes_out  
     else:
         raise HTTPException(status_code=404, detail="El cliente no existe")
+
+@api.get("/clientes/compras/{cc}")
+async def Obtener_compras(cc: int):
+    compras_in_db = get_Compra_Cliente(cc)
+    compras_out = []
+    if compras_in_db != None:
+        for i in compras_in_db:            
+            compra_out = ComprasOut(**i.dict())
+            compras_out.append(compra_out)
+        return compras_out 
+    else:
+        raise HTTPException(status_code=404, detail="El cliente no registra compras")
 
 @api.put("/clientes/actualizar/")
 async def Actualizar_cliente(clientes_in: ClientesIn):
