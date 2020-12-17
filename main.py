@@ -14,6 +14,7 @@ origins = [
     "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
     "http://localhost", "http://localhost:8080",
     "https://minisap01.herokuapp.com" #Nombre de la app en Heroku - MiniSAP 
+    "https"
 ]
 
 api.add_middleware(
