@@ -12,7 +12,7 @@ api = FastAPI()
 
 origins = [
     "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
-    "http://localhost", "http://localhost:8000",
+    "http://localhost", "http://localhost:8080",
     "https://minisap01.herokuapp.com" #Nombre de la app en Heroku - MiniSAP 
 ]
 
@@ -60,4 +60,3 @@ async def Actualizar_cliente(clientes_in: ClientesIn):
         raise HTTPException(status_code=404, detail="El cliente no existe")
     else:  
         update_cliente(clientes_in_db)
-        raise HTTPException(status_code=200, detail="El cliente has sido actualizado")
