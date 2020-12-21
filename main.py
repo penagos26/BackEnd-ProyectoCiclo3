@@ -13,8 +13,8 @@ api = FastAPI()
 origins = [
     "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
     "http://localhost", "http://localhost:8080",
-    "https://minisap01.herokuapp.com" #Nombre de la app en Heroku - MiniSAP 
-    "https"
+    "https://minisap01.herokuapp.com", #Nombre de la app en Heroku - MiniSAP 
+    "https://minisap-app01.herokuapp.com/"
 ]
 
 api.add_middleware(
@@ -22,7 +22,7 @@ api.add_middleware(
     allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
 )
 
-@api.post("/clientes/registro_cliente/{cc}")
+@api.post("/clientes/registro_cliente/")
 async def Reg_cliente(cliente_in: ClientesIn):
     cliente_in_db = get_cliente(cliente_in.cc)
     if cliente_in_db == None:
