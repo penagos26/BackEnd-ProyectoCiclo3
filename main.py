@@ -35,7 +35,7 @@ async def Reg_cliente(cliente_in: ClientesOut):
 
 @api.get("/clientes/consultar/{cc}")
 async def Obtener_cliente(cc : int):
-    clientes_in_db = get_cliente(cliente_in.cc)
+    clientes_in_db = get_cliente(cc)
     if clientes_in_db != None:
         clientes_out = ClientesOut(**clientes_in_db.dict())
         return clientes_out  
@@ -44,7 +44,7 @@ async def Obtener_cliente(cc : int):
 
 @api.get("/clientes/compras/{cc}")
 async def Obtener_compras(cc : int):
-    compras_in_db = get_Compra_Cliente(cliente_in.cc)
+    compras_in_db = get_Compra_Cliente(cc)
     compras_out = []
     if compras_in_db != None:
         for i in compras_in_db:            
