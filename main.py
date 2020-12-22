@@ -33,8 +33,8 @@ async def Reg_cliente(cliente_in: ClientesOut):
         #raise HTTPException(status_code=404, detail="El cliente ya existe") 
     return  Estado
 
-@api.get("/clientes/consultar/")
-async def Obtener_cliente(cliente_in: ClientesIn):
+@api.get("/clientes/consultar/{cc}")
+async def Obtener_cliente(cc : int):
     clientes_in_db = get_cliente(cliente_in.cc)
     if clientes_in_db != None:
         clientes_out = ClientesOut(**clientes_in_db.dict())
@@ -42,8 +42,8 @@ async def Obtener_cliente(cliente_in: ClientesIn):
     else:
         raise HTTPException(status_code=404, detail="El cliente no existe")
 
-@api.get("/clientes/compras/")
-async def Obtener_compras(cliente_in: ClientesIn):
+@api.get("/clientes/compras/{cc}")
+async def Obtener_compras(cc : int):
     compras_in_db = get_Compra_Cliente(cliente_in.cc)
     compras_out = []
     if compras_in_db != None:
