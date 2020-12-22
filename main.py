@@ -23,7 +23,7 @@ api.add_middleware(
 )
 
 @api.post("/clientes/registro_cliente/")
-async def Reg_cliente(cliente_in: ClientesIn):
+async def Reg_cliente(cliente_in: ClientesOut):
     cliente_in_db = get_cliente(cliente_in.cc)
     if cliente_in_db == None:
         save_cliente(cliente_in)
@@ -55,7 +55,7 @@ async def Obtener_compras(cc: int):
         raise HTTPException(status_code=404, detail="El cliente no registra compras")
 
 @api.put("/clientes/actualizar/")
-async def Actualizar_cliente(clientes_in: ClientesIn):
+async def Actualizar_cliente(clientes_in: ClientesOut):
     clientes_in_db = get_cliente(clientes_in.cc)
     if clientes_in_db == None:
         raise HTTPException(status_code=404, detail="El cliente no existe")
