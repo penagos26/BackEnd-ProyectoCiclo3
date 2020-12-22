@@ -65,6 +65,6 @@ async def Actualizar_cliente(clientes_in: ClientesOut):
 
 @api.post("/clientes/compras/agregar/")
 async def Reg_compra(compra_in: ComprasOut):
-        save_compra(compra_in)
-        Estado = {"Compra Creada": True}
-return  Estado
+    save_compra(compra_in)
+    Estado = {"Compra Creada": True}
+    return  Estado
